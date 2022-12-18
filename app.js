@@ -2,12 +2,6 @@ import express, { json } from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 
-//for google account
-import expressSession from "express-session";
-import passport from "passport";
-import googleRouter from "./routes/google.route.js";
-import "./controllers/google.controller.js";
-
 // import cors from "cors";
 import multer from "multer";
 import dotenv from "dotenv";
@@ -65,12 +59,6 @@ app.use("/news", newsRouter);
 app.use("/holiday", holidayRouter);
 app.use("/contact", contactRouter);
 app.use("/about", aboutRouter);
-
-//google implements
-app.use(expressSession({ secret: "googlesecret" }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use("/auth", googleRouter);
 
 //error handle
 app.use((req, res, next) => {
